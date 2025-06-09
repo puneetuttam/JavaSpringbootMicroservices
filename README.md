@@ -92,6 +92,58 @@ Popular Web Frameworks
 
 Spring takes away the hassle of creating application which was further improved by Spring boot
 
-Feature of Spring Frameworks
-    - Iversion of Controls(IOC): It is design principle
+Beans: Objects that are managed by spring framework are knows as Beans.
 
+Feature of Spring Frameworks
+- Inversion of Controls (IOC): Inversion of Control is a design principle where the control of object creation and dependency management is transferred from the application code to a framework or container.
+```
+public interface MessageService(){
+    String getMesage();
+}
+
+public class EmailService implments MessageService{
+    public String getMessage(){
+        return "Email message";
+    }
+}
+
+
+//Without IOC
+public class SMSClient{
+    private MessageService messageService;
+    public SMSClient{
+        this.messageService=new EmailService(); //Dependency created within SMSClient
+
+    }
+    public void sendMessage(){
+        String message=messageService.getMessage() 
+        //Logic to send sms using the message
+    }
+}
+
+// With IOC
+public class SMSClient{
+    private MessageService messageService;
+    public SMSClient{
+        this.messageService= messageService;
+
+    }
+    public void sendMessage(){
+        String message=messageService.getMessage();
+        //Logic to send sms using the message
+    }
+}
+
+```
+
+- Data Access: Spring framework have things like JPA JDBC Hybername which makes life easy when you are making database driven application and it enables you to work with databases in easier way
+
+- MVC Framework: 
+    - Model:	Represents the data and business logic.
+    - View:	Represents the UI (what the user sees).
+    - Controller:Handles user input, updates the model, and returns views.
+- Transaction Management: It provides us a unified way to manage transaction
+- Security: Spring Security is the module that is available in Spring Boot. It helps in authentication and provide security
+
+- Testing Support: for Unit testing. you can easily integrate junit and mokito
+- Internationalization(i18n) and Localization(l10n): it helps to  create application that can be easily be adobted by other language
